@@ -1,0 +1,152 @@
+<!doctype html><html lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>打卡地图</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+ --ink:#33405a;--sub:#7d8aa3;--line:rgba(70,180,150,.32);
+ --card:rgba(255,255,255,.66);--panel:rgba(255,255,255,.90);
+ --gold:#d1900f;--org:#e2762a;--navy:#2bb593;--grn:#3aa564;--red:#e0674f;
+}
+html{background:#dff6ec;}
+body{
+ min-height:100vh;
+ background:linear-gradient(180deg,#bfeedd 0%,#dcf6eb 48%,#effbf6 100%) fixed;
+ color:var(--ink);
+ font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",-apple-system,sans-serif;
+ line-height:1.5;
+ padding:16px 12px 46px;
+}
+.wm{position:fixed;top:10px;right:14px;z-index:9999;pointer-events:none;font-family:"PingFang SC",sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.6px;color:rgba(40,150,120,.62);text-shadow:0 1px 2px rgba(255,255,255,.75);}
+.wrap{max-width:620px;margin:0 auto;background:var(--panel);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.85);border-radius:22px;box-shadow:0 12px 44px rgba(50,160,130,.22);padding:6px 16px 22px;}
+header{padding:20px 2px 8px;}
+h1{font-size:25px;font-weight:900;letter-spacing:-.5px;color:var(--ink);}
+h1 .pin{color:var(--org);}
+.meta{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.6;}
+.legend{font-size:12px;color:#5c6a86;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:14px;padding:10px 13px;margin-top:12px;line-height:1.7;}
+.legend b{color:var(--org);}
+.legend .cn{color:var(--navy);font-weight:700;}
+.search{margin:14px 0 8px;position:sticky;top:8px;z-index:20;}
+.search input{width:100%;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:14px;color:var(--ink);font-size:15px;padding:13px 16px;outline:none;box-shadow:0 3px 12px rgba(50,160,130,.14);}
+.search input::placeholder{color:#a7b3c8;}
+.filters{margin-bottom:6px;}
+.frow{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0;align-items:center;}
+.flabel{font-size:11px;font-weight:800;color:#9aa6bd;width:100%;letter-spacing:1px;}
+.chip{font-size:12.5px;font-weight:700;padding:6px 13px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.66);color:var(--sub);cursor:pointer;user-select:none;transition:.12s;}
+.chip.on{background:var(--gold);color:#fff;border-color:var(--gold);}
+.chip.mem.on{background:#2bb593;color:#fff;border-color:#2bb593;}
+.chip.reg.on{background:var(--org);color:#fff;border-color:var(--org);}
+.count{font-size:12.5px;color:var(--sub);margin:8px 2px 12px;}
+.count b{color:var(--org);}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.75);border-radius:16px;padding:15px 15px 13px;margin-bottom:12px;border-left:5px solid #c3d6ea;box-shadow:0 4px 16px rgba(50,160,130,.12);}
+.card[data-conf="高"]{border-left-color:var(--grn);}
+.card[data-conf="中"]{border-left-color:var(--gold);}
+.card .nm{font-size:17.5px;font-weight:900;letter-spacing:-.3px;color:var(--ink);}
+.card .kr{font-size:12.5px;color:var(--sub);font-weight:600;margin-left:2px;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px;}
+.t{font-size:11px;font-weight:800;padding:3px 10px;border-radius:14px;}
+.t.mem{background:#dbeafb;color:#2f6fb0;}
+.t.all{background:#daf5ea;color:#1f8a6e;}
+.t.cat{background:#eef0f6;color:#6a6f88;border:1px solid #e0e2ee;}
+.t.area{background:#fbf1d6;color:#a5801f;}
+.t.ch{background:rgba(58,165,100,.15);color:#2f8a51;}
+.t.cm{background:rgba(209,144,15,.16);color:#a5801f;}
+.addr{font-size:13.5px;color:var(--ink);margin-top:7px;}
+.addr .lb{color:#93a2bd;font-weight:800;font-size:11px;margin-right:5px;}
+.sub{font-size:13px;color:#5f6b82;margin-top:6px;line-height:1.55;}
+.src{font-size:11.5px;color:#9aa6bd;margin-top:7px;}
+.nav{display:flex;gap:7px;margin-top:11px;}
+.nav a{flex:1;text-align:center;font-size:12.5px;font-weight:800;padding:9px 4px;border-radius:10px;text-decoration:none;}
+.nav .n{background:#e4f6ea;color:#2f9257;border:1px solid #cdebd8;}
+.nav .k{background:#fff4d6;color:#a5801f;border:1px solid #f0e0a8;}
+.nav .g{background:#eaf1ff;color:#4f74c8;border:1px solid #d3e0fb;}
+.empty{text-align:center;color:var(--sub);padding:40px 0;font-size:14px;}
+footer{margin-top:22px;font-size:11.5px;color:#9aa6bd;line-height:1.7;border-top:1px solid var(--line);padding-top:14px;}
+@media print{
+ body{background:#e8f8f1 !important;padding:0;}
+ .wrap{box-shadow:none;background:#fff;border:none;border-radius:0;max-width:100%;backdrop-filter:none;}
+ .search,.filters,.count{display:none!important;}
+ .card{break-inside:avoid;box-shadow:none;background:#fff;}
+ a{color:#333;}
+}
+</style></head>
+<body>
+<div class="wm" id="wm"></div>
+<div class="wrap">
+<header>
+  <h1><span class="pin">📍</span> <span id="gname"></span> 打卡地图</h1>
+  <div class="meta" id="meta"></div>
+  <div class="legend">
+    <b>怎么用：</b>先点 <b>城市</b>(首尔/釜山/东京/福冈…)，下面才会展开该城市的具体区域；再配合 <b>成员 / 分类</b> 标签筛选。顶部搜索框可搜店名/成员/区域；每个点一键跳地图。
+    可信度：<span style="color:var(--grn)">●高</span>=官方vlog/综艺或多方印证 · <span style="color:var(--gold)">●中</span>=单一来源待再核。已删除所有快闪/生日咖啡。
+    <br><span class="cn">🇨🇳 中国大陆：</span>用 <b>Naver / Kakao</b> 免梯子、韩国最准；<b>Google 地图</b>需梯子才能打开。
+  </div>
+</header>
+
+<div class="search"><input id="q" type="search" placeholder="🔍 搜索：店名 / 成员 / 区域 / 关键词…"></div>
+
+<div class="filters">
+  <div class="frow" id="fregion"><span class="flabel">地区</span></div>
+  <div class="frow" id="fmem"><span class="flabel">成员</span></div>
+  <div class="frow" id="fcat"><span class="flabel">分类</span></div>
+  <div class="frow" id="farea"><span class="flabel">区域</span></div>
+</div>
+<div class="count" id="count"></div>
+<div id="list"></div>
+
+<footer id="foot"></footer>
+</div>
+
+<script>document.write('<script src="config.js?t='+Date.now()+'"><\/script><script src="data.js?t='+Date.now()+'"><\/script>');</script>
+<script>
+const S=window.MAP_SPOTS, listEl=document.getElementById('list');
+// 地区=城市级：日本·xx 去掉"日本·"前缀取城市名，其余城市按原样(首尔/釜山/东京/福冈/佐賀/箱根…)
+S.forEach(s=>{s.region=(s.city&&s.city.indexOf('日本·')===0)?s.city.slice(3):s.city;});
+// 严格按 owner 定的 emoji 对照：🦊朴成淏 🎁李常赫 🐶明宰铉 🐈‍⬛韩泰山 🐠金桐儇 🐷金云鹤
+const C=window.MAP_CONFIG;const MEM=C.members;const ALL=C.allTag||'全员';
+const MEMORDER=C.memberOrder;
+const REGORDER=C.cityOrder;document.title=C.groupName+' 打卡地图';document.getElementById('gname').textContent=C.groupName;document.getElementById('wm').textContent=C.watermark||'';
+document.getElementById('meta').textContent=`共 ${S.length} 个点 · 成员真实到访/官方内容·常驻可打卡 · 更新 ${window.MAP_CONFIG.updated} · 数据来自官方vlog/综艺+粉丝实测整理`;
+const state={q:'',region:new Set(),mem:new Set(),cat:new Set(),area:new Set()};
+const uniq=k=>[...new Set(S.flatMap(s=>Array.isArray(s[k])?s[k]:[s[k]]))];
+function chips(id,field,skey,cls){const box=document.getElementById(id);let vs=uniq(field);if(skey==='mem')vs=vs.slice().sort((a,b)=>{const ia=MEMORDER.indexOf(a),ib=MEMORDER.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib);});if(skey==='region')vs=vs.slice().sort((a,b)=>{const ia=REGORDER.indexOf(a),ib=REGORDER.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib);});vs.forEach(v=>{const c=document.createElement('span');c.className='chip'+(cls?' '+cls:'');c.textContent=(skey==='mem'?(MEM[v]||v):v);c.onclick=()=>{state[skey].has(v)?state[skey].delete(v):state[skey].add(v);c.classList.toggle('on');render();};box.appendChild(c);});}
+chips('fmem','members','mem','mem');chips('fcat','cat','cat');
+// —— 地区两级联动：默认只显示 首尔/东京/釜山；点了某个大区，才展开它下面的区域 ——
+function areasForSel(){const out=[];S.forEach(s=>{if(state.region.has(s.region)&&!out.includes(s.area))out.push(s.area);});return out;}
+function buildAreaChips(){const row=document.getElementById('farea');row.querySelectorAll('.chip').forEach(c=>c.remove());const areas=areasForSel().filter(a=>!state.region.has(a));if(state.region.size===0||areas.length===0){row.style.display='none';return;}row.style.display='flex';areas.forEach(v=>{const c=document.createElement('span');c.className='chip'+(state.area.has(v)?' on':'');let label=v;['东京·','釜山·'].forEach(p=>{if(label.indexOf(p)===0)label=label.slice(p.length);});c.textContent=label;c.onclick=()=>{state.area.has(v)?state.area.delete(v):state.area.add(v);c.classList.toggle('on');render();};row.appendChild(c);});}
+function buildRegionChips(){const box=document.getElementById('fregion');box.querySelectorAll('.chip').forEach(c=>c.remove());let vs=[...new Set(S.map(s=>s.region))].sort((a,b)=>{const ia=REGORDER.indexOf(a),ib=REGORDER.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib);});vs.forEach(v=>{const c=document.createElement('span');c.className='chip reg'+(state.region.has(v)?' on':'');c.textContent=v;c.onclick=()=>{state.region.has(v)?state.region.delete(v):state.region.add(v);const allow=new Set(areasForSel());[...state.area].forEach(a=>{if(!allow.has(a))state.area.delete(a);});c.classList.toggle('on');buildAreaChips();render();};box.appendChild(c);});}
+buildRegionChips();buildAreaChips();
+document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value.trim().toLowerCase();render();});
+function match(s){
+  if(state.region.size&&!state.region.has(s.region))return false;
+  if(state.mem.size&&![...state.mem].some(m=>s.members.includes(m)))return false;
+  if(state.cat.size&&!state.cat.has(s.cat))return false;
+  if(state.area.size&&!state.area.has(s.area))return false;
+  if(state.q){const blob=(s.zh+' '+s.kr+' '+s.addr+' '+s.sub+' '+s.members.map(m=>MEM[m]||m).join(' ')+' '+s.members.join(' ')+' '+s.area+' '+s.cat).toLowerCase();if(!blob.includes(state.q))return false;}
+  return true;
+}
+function card(s){
+  const mem=s.members.map(m=>`<span class="t ${m===ALL?'all':'mem'}">${MEM[m]||m}</span>`).join('');
+  const q=encodeURIComponent(s.mapq);
+  const n=`https://map.naver.com/p/search/${q}`;
+  const k=`https://map.kakao.com/?q=${q}`;
+  const g=`https://www.google.com/maps/search/?api=1&query=${q}`;
+  return `<div class="card" data-conf="${s.conf}">
+    <div class="nm">${s.zh} ${s.kr?`<span class="kr">${s.kr}</span>`:''}</div>
+    <div class="tags">${mem}<span class="t cat">${s.cat}</span><span class="t area">${s.area}</span><span class="t ${s.conf==='高'?'ch':'cm'}">●${s.conf}可信</span></div>
+    <div class="addr"><span class="lb">地址</span>${s.addr}</div>
+    ${s.sub?`<div class="sub">${s.sub}</div>`:''}
+    <div class="src">来源：${s.src}</div>
+    <div class="nav"><a class="n" href="${n}" target="_blank">🟢 Naver</a><a class="k" href="${k}" target="_blank">🟡 Kakao</a><a class="g" href="${g}" target="_blank">🗺️ Google</a></div>
+  </div>`;
+}
+function render(){
+  const r=S.filter(match);
+  document.getElementById('count').innerHTML=`筛选出 <b>${r.length}</b> / ${S.length} 个点`;
+  listEl.innerHTML=r.length?r.map(card).join(''):'<div class="empty">没有符合条件的点，换个筛选试试～</div>';
+}
+document.getElementById('foot').innerHTML=`宁缺毋滥：只收录有出处、且常驻可打卡的点。快闪/生日咖啡/机场联名等临时项已排除。<br>精确门牌未定的点已在地址里标注，去前建议用 Naver/Kakao 地图搜韩文名再确认营业。<br>${window.MAP_CONFIG.signature} 自制打卡地图 · 数据来自官方vlog/综艺 + 多篇粉丝实测攻略 · 持续更新 · ${window.MAP_CONFIG.updated}`;
+render();
+</script>
+</body></html>
