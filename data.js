@@ -38,5 +38,5 @@ window.MAP_SPOTS = [
  {id:35, city:"首尔", zh:"赤土发酵烤肉 龙山店", kr:"적토발효구이 용산점", cat:"美食", area:"龙山", members:["全员"], addr:"待核(HYBE附近)", sub:"店里有TXT全员签名;成员来这里吃过饭(有视频截图)", src:"粉丝实测攻略", conf:"高", mapq:"적토발효구이 용산점"},
  {id:36, city:"首尔", zh:"热情岛烤肉店", kr:"열정도고깃집", cat:"美食", area:"龙山", members:["崔秀彬","休宁凯"], addr:"待核(龙山区)", sub:"店里有🐰🐧签名", src:"粉丝实测攻略", conf:"中", mapq:"열정도고깃집"},
  {id:37, city:"首尔", zh:"Downtowner 汉堡", kr:"다운타우너", cat:"美食", area:"待核", members:["全员"], addr:"待核(原帖未写哪家分店)", sub:"TXT同款汉堡店;首尔有多家分店", src:"粉丝实测攻略", conf:"中", mapq:"다운타우너"},
- {id:38, city:"日本·东京", zh:"Doshieobu 韩国料理", kr:"トシオブ韓国料理屋(도시어부)", cat:"美食", area:"待核", members:["全员"], addr:"待核", sub:"店里墙上有TXT签名", src:"粉丝实测攻略", conf:"中", mapq:"トシオブ 韓国料理"}
+ {id:38, city:"日本·东京", zh:"Doshieobu 韩国料理", kr:"トシオブ韓国料理屋(도시어부)", cat:"美食", area:"新大久保", members:["全员"], addr:"東京都新宿区大久保2-26-1 B1", sub:"店里墙上有TXT签名;新大久保站步行约6分钟;韩式海鲜/酱蟹店", src:"粉丝实测攻略", conf:"中", mapq:"トシオブ 新宿区大久保2-26-1"}
 ];
