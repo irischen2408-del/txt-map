@@ -72,5 +72,12 @@ window.MAP_SPOTS = [
  {id:69, city:"首尔", zh:"首尔唱片", kr:"", cat:"购物", area:"钟路", members:["姜太显", "崔杋圭"], addr:"서울 종로구 종로 154", sub:"🐿️🐻钟路约会VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"종로 154"},
  {id:70, city:"首尔", zh:"Zion 钟路店", kr:"ZION", cat:"美食", area:"钟路", members:["姜太显", "崔杋圭"], addr:"서울 종로구 돈화문로4길 37 5-6층", sub:"🐿️🐻钟路约会VLOG拍摄地;汉堡店", src:"官方vlog+粉丝整理", conf:"高", mapq:"돈화문로4길 37"},
  {id:71, city:"首尔", zh:"경은原声 乐器店", kr:"경은어쿠스틱", cat:"购物", area:"钟路", members:["姜太显", "崔杋圭"], addr:"서울 종로구 종로17길 45 경동빌딩 2층", sub:"🐿️🐻钟路约会VLOG拍摄地;吉他店", src:"官方vlog+粉丝整理", conf:"高", mapq:"종로17길 45"},
- {id:72, city:"首尔", zh:"地带房 茶室", kr:"", cat:"咖啡·点心", area:"钟路·仁寺洞", members:["姜太显", "崔杋圭"], addr:"서울 종로구 인사동길 33 2F", sub:"🐿️🐻钟路约会VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"인사동길 33"}
+ {id:72, city:"首尔", zh:"地带房 茶室", kr:"", cat:"咖啡·点心", area:"钟路·仁寺洞", members:["姜太显", "崔杋圭"], addr:"서울 종로구 인사동길 33 2F", sub:"🐿️🐻钟路约会VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"인사동길 33"},
+ {id:73, city:"首尔", zh:"Omni People Gallery 奥姆尼人画廊", kr:"옴니피플갤러리", cat:"购物", area:"江南·清潭", members:["崔然竣"], addr:"서울 강남구 언주로152길 13", sub:"🦊集合店购物VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"언주로152길 13"},
+ {id:74, city:"首尔", zh:"kasina1997", kr:"kasina1997", cat:"购物", area:"江南·清潭", members:["崔然竣"], addr:"서울 강남구 언주로164길 13", sub:"🦊集合店购物VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"언주로164길 13"},
+ {id:75, city:"首尔", zh:"PALPAL", kr:"PALPAL", cat:"咖啡·点心", area:"狎鸥亭", members:["崔然竣"], addr:"서울 강남구 압구정로42길 45 1층", sub:"🦊集合店购物VLOG拍摄地;这里就是之前🐿️拍概念照的玫红色咖啡厅,现在拆掉重建了", src:"官方vlog+粉丝整理", conf:"高", mapq:"압구정로42길 45"},
+ {id:76, city:"首尔", zh:"周天汉堡俱乐部", kr:"", cat:"美食", area:"江南·清潭", members:["崔然竣"], addr:"서울 강남구 언주로170길 37 201호", sub:"🦊集合店购物VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"언주로170길 37"},
+ {id:77, city:"首尔", zh:"WORKSOUT 江南店", kr:"WORKSOUT", cat:"购物", area:"江南·清潭", members:["崔然竣"], addr:"서울 강남구 선릉로157길 20-4", sub:"🦊集合店购物VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"선릉로157길 20-4"},
+ {id:78, city:"首尔", zh:"PALACE", kr:"PALACE", cat:"购物", area:"狎鸥亭", members:["崔然竣"], addr:"서울 강남구 압구정로50길 17", sub:"🦊集合店购物VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"압구정로50길 17"},
+ {id:79, city:"首尔", zh:"PLAN.B 狎鸥亭罗德奥店", kr:"PLAN. B", cat:"购物", area:"狎鸥亭", members:["崔然竣"], addr:"서울 강남구 압구정로50길 27 지상1층 102호, 지하1층", sub:"🦊集合店购物VLOG拍摄地", src:"官方vlog+粉丝整理", conf:"高", mapq:"압구정로50길 27"}
 ];
