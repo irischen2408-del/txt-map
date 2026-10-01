@@ -62,5 +62,10 @@ window.MAP_SPOTS = [
  {id:59, city:"首尔", zh:"麻浦新光文化林", kr:"", cat:"地标", area:"麻浦", members:["姜太显"], addr:"서울 마포구 토정로 56", sub:"《To Reach You》拍摄地", src:"官方内容+粉丝整理", conf:"高", mapq:"토정로 56"},
  {id:60, city:"首尔", zh:"Cacti Gacha 扭蛋店 钟阁店", kr:"Cacti Gacha", cat:"玩乐", area:"钟路", members:["崔秀彬"], addr:"서울 종로구 종로12길 9 1~2층", sub:"🐰ins(25.06.05)更新同款", src:"成员ins+粉丝整理", conf:"高", mapq:"종로12길 9"},
  {id:61, city:"首尔", zh:"京义线林间路 舍廊房", kr:"", cat:"地标", area:"龙山", members:["崔秀彬", "崔杋圭"], addr:"서울 용산구 신계동 1-276", sub:"🐰ins(24.01.05)、🐻ins(24.01.03)都更新过同款;蓝色小火车车厢", src:"成员ins+粉丝整理", conf:"高", mapq:"신계동 1-276"},
- {id:62, city:"首尔", zh:"ARCH 首尔 龙山店", kr:"ARCH", cat:"美食", area:"龙山", members:["休宁凯"], addr:"서울 용산구 한강대로52길 25-8 201호,202호", sub:"🐧姐姐ins(25.06.05)更新同款;休宁家族set:纽约客牛排₩69000+酱汁章鱼₩31500+烟熏蒜油虾₩26500+茄汁意面₩25500,总计约806元", src:"家人ins+粉丝整理", conf:"中", mapq:"한강대로52길 25-8"}
+ {id:62, city:"首尔", zh:"ARCH 首尔 龙山店", kr:"ARCH", cat:"美食", area:"龙山", members:["休宁凯"], addr:"서울 용산구 한강대로52길 25-8 201호,202호", sub:"🐧姐姐ins(25.06.05)更新同款;休宁家族set:纽约客牛排₩69000+酱汁章鱼₩31500+烟熏蒜油虾₩26500+茄汁意面₩25500,总计约806元", src:"家人ins+粉丝整理", conf:"中", mapq:"한강대로52길 25-8"},
+ {id:63, city:"日本·东京", zh:"NOA COFFEE", kr:"NOA COFFEE", cat:"咖啡·点心", area:"涩谷·神宫前", members:["崔然竣"], addr:"1 Chome-17-5 Jingumae, Shibuya, Tokyo 150-0001", sub:"🦊IG里的美食;🦊pick:抹茶草莓华夫饼(Matcha Strawberry Waffle)1700日元;不是特别甜的甜品店", src:"成员ins+粉丝整理", conf:"高", mapq:"NOA COFFEE 1-17-5 Jingumae"},
+ {id:64, city:"日本·东京", zh:"LUKE'S LOBSTER", kr:"LUKE'S LOBSTER", cat:"美食", area:"连锁店", members:["崔然竣"], addr:"连锁店,东京新宿/表参道都有", sub:"🦊IG里的美食;🦊pick:龙虾卷Lobster Roll Regular 2680日元;龙虾肉多但是冷的,不能接受的宝宝慎重", src:"成员ins+粉丝整理", conf:"高", mapq:"LUKE'S LOBSTER Tokyo"},
+ {id:65, city:"日本·东京", zh:"俺流塩拉面", kr:"俺流塩ラーメン", cat:"美食", area:"连锁店", members:["崔然竣"], addr:"连锁店,东京多家", sub:"🦊IG里的美食;🦊pick:柚子盐拉面(ゆず塩)980日元;据说是东京最好吃的拉面之一", src:"成员ins+粉丝整理", conf:"高", mapq:"俺流塩ラーメン"},
+ {id:66, city:"首尔", zh:"汝矣岛汉江公园", kr:"여의도한강공원", cat:"地标", area:"汝矣岛", members:["崔然竣"], addr:"서울 영등포구 여의동로 330 여의도한강공원", sub:"《剧场之我不是独自生活》EP.2同款拍摄地", src:"官方综艺+粉丝整理", conf:"高", mapq:"여의동로 330"},
+ {id:67, city:"首尔", zh:"金红 中餐厅", kr:"금홍", cat:"美食", area:"江南·论岘", members:["全员"], addr:"서울 강남구 논현로149길 35", sub:"《Our SANCTUARY》同款;根据🐧说的'再往前走一点有一家经常去的中餐厅'推测是这家,请酌情", src:"官方内容+粉丝推测", conf:"低", mapq:"논현로149길 35"}
 ];
